@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breakout</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+
+    <header>
+        <h1>Breakout</h1>
+        <div class="top-controls">
+            <button id="menu-toggle">☰ Menú</button>
+            <button id="theme-toggle">🌓 Modo</button>
+        </div>
+        <nav class="fade-in">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#mecanicas">Mecánicas</a></li>
+                <li><a href="#acerca">Acerca</a></li>
+                <li><a href="#medios">Medios</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor">
+
+        <section id="inicio">
+            <h2>Bienvenido a la página de Breakout</h2>
+            <p>Breakout es un videojuego clásico en el que controlas una plataforma para hacer rebotar una pelota y destruir bloques. ¡Descubre su historia y mecánicas en esta página!</p>
+        </section>
+
+        <section id="historia">
+            <h2>Historia de Breakout</h2>
+            <p>Breakout fue creado en 1976 por Atari, diseñado por Nolan Bushnell y Steve Bristow. Su objetivo era crear un juego sencillo pero adictivo, inspirado en el popular Pong. Se popularizó rápidamente en las salas recreativas y se convirtió en un referente de los juegos de habilidad.</p>
+        </section>
+
+        <section id="mecanicas">
+            <h2>Mecánicas del Juego</h2>
+            <p>El objetivo de Breakout es destruir todos los bloques en pantalla haciendo rebotar una pelota con una plataforma. Si la pelota toca el suelo, pierdes una vida. Los jugadores deben mover la plataforma para mantener la pelota en juego.</p>
+        </section>
+
+        <section id="acerca">
+            <h2>Datos Curiosos</h2>
+            <p>Breakout inspiró muchos juegos similares en los años siguientes. Steve Jobs y Steve Wozniak participaron en el desarrollo del hardware, sentando las bases para futuras innovaciones en videojuegos.</p>
+        </section>
+
+        <section id="medios">
+            <h2>Medios</h2>
+            <p>Más información sobre Breakout y su legado se puede encontrar en sitios como <a href="https://es.wikipedia.org/wiki/Breakout" target="_blank">Wikipedia</a> y la página oficial de <a href="https://www.atari.com" target="_blank">Atari</a>.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>©2025 Página no oficial dedicada a Breakout.</p>
+    </footer>
+
+    <button id="scrollToTop" title="Volver arriba">↑</button>
+    
+    <!-- Script para el cambio de tema -->
+    <script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+
+        themeToggle.addEventListener("click", () => {
+            body.classList.toggle("oscuro");
+        });
+
+        // Mostrar botón de scroll solo al bajar
+        const scrollToTop = document.getElementById("scrollToTop");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                scrollToTop.style.display = "block";
+            } else {
+                scrollToTop.style.display = "none";
+            }
+        });
+
+        // Función para volver arriba
+        scrollToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+
+
+<script src="main.js"></script>
+
+</body>
+</html>
