@@ -129,3 +129,27 @@ footer {
 #scrollToTop:hover {
   background-color: var(--button-hover);
 }
+
+.breakout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #000;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+#breakoutCanvas {
+  background-color: #111;
+  border: 2px solid #fff;
+  display: block;
+}
+
+.breakout-score {
+  color: #fff;
+  margin-top: 10px;
+  font-weight: bold;
+  display: flex;
+  gap: 20px;
+}
