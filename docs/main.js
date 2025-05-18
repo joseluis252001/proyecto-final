@@ -18,8 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const themeToggle = document.getElementById("theme-toggle");
 
     // Verifica si el usuario ya tiene un tema guardado
-    if (localStorage.getItem("tema") === "oscuro") {
+    const savedTheme = localStorage.getItem("tema");
+    if (savedTheme === "oscuro") {
         document.body.classList.add("oscuro");
+        themeToggle.textContent = "🌞 Modo Claro";
+    } else {
+        themeToggle.textContent = "🌙 Modo Oscuro";
     }
 
     // Evento para cambiar entre modo claro y oscuro
@@ -27,9 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (document.body.classList.contains("oscuro")) {
             document.body.classList.remove("oscuro");
             localStorage.setItem("tema", "claro");
+            themeToggle.textContent = "🌙 Modo Oscuro";
         } else {
             document.body.classList.add("oscuro");
             localStorage.setItem("tema", "oscuro");
+            themeToggle.textContent = "🌞 Modo Claro";
         }
     });
 

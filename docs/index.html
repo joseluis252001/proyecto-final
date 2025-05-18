@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breakout</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styless.css">
     <link rel="icon" href="favicon.ico">
 </head>
 <body>
@@ -60,34 +60,7 @@
     </footer>
 
     <button id="scrollToTop" title="Volver arriba">↑</button>
-    
-    <!-- Script para el cambio de tema -->
-    <script>
-        const themeToggle = document.getElementById("theme-toggle");
-        const body = document.body;
 
-        themeToggle.addEventListener("click", () => {
-            body.classList.toggle("oscuro");
-        });
-
-        // Mostrar botón de scroll solo al bajar
-        const scrollToTop = document.getElementById("scrollToTop");
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 100) {
-                scrollToTop.style.display = "block";
-            } else {
-                scrollToTop.style.display = "none";
-            }
-        });
-
-        // Función para volver arriba
-        scrollToTop.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
-        });
-    </script>
-
-
-<script src="main.js"></script>
-
+    <script src="main.js"></script>
 </body>
 </html>
