@@ -60,9 +60,6 @@ let lives = 3;
 let gameRunning = false;
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
-
-
-
 // Pelota
 const ballRadius = 10;
 let ball = {
@@ -164,6 +161,7 @@ function moveBall() {
     // Colisión con el borde inferior
     if (ball.y + ball.radius > canvas.height) {
         lives--;
+        updateLives();
         if (lives === 0) {
             alert("¡Juego terminado!");
             document.location.reload();
@@ -180,6 +178,8 @@ function resetBall() {
     ball.dx = 2 * (Math.random() > 0.5 ? 1 : -1);
     ball.dy = -2;
 }
+
+
 
 // Dibuja la pelota
 function drawBall() {
@@ -203,12 +203,56 @@ function collisionDetection() {
                     ball.dy = -ball.dy;
                     b.status = 0;
                     score += b.points;
+                    updateScore();
                     if (checkVictory()) alert("¡Ganaste!");
                 }
             }
         }
     }
 }
+
+//Llamar funcion actualizar marcador:
+function updateScore() {
+    const scoreElement = document.getElementById("score");
+    console.log("Elemento de puntuación encontrado:", scoreElement);
+    console.log("Valor de puntuación antes de actualizar:", score);
+    if (scoreElement) {
+        scoreElement.textContent = score;
+        console.log("Puntuación actualizada a:", score);
+    } else {
+        console.error("No se encontró el elemento 'score'");
+    }
+}
+//Llamar funcion actualizar perder una vida:
+function updateLives() {
+    const livesElement = document.getElementById("lives");
+    console.log("Elemento de vidas encontrado:", livesElement);
+    console.log("Valor de vidas antes de actualizar:", lives);
+    if (livesElement) {
+        livesElement.textContent = lives;
+        console.log("Vidas actualizadas a:", lives);
+    } else {
+        console.error("No se encontró el elemento 'lives'");
+    }
+}
+
+
+//actualizar  marcador
+const startButton = document.getElementById("startButton");
+startButton.addEventListener("click", () => {
+    document.getElementById("startScreen").style.display = "none";
+    startGame();
+});
+
+function updateScore() {
+    document.getElementById("score").textContent = score;
+}
+
+function updateLives() {
+    document.getElementById("lives").textContent = lives;
+}
+
+
 
 //Dibujar Ladrillos
 function drawBricks() {
@@ -253,27 +297,6 @@ function startGame() {
     createBricks();
     draw();
 }
-
-//actualizar  marcador
-const startButton = document.getElementById("startButton");
-startButton.addEventListener("click", () => {
-    document.getElementById("startScreen").style.display = "none";
-    startGame();
-});
-
-function updateScore() {
-    document.getElementById("score").textContent = score;
-}
-
-function updateLives() {
-    document.getElementById("lives").textContent = lives;
-}
-
-//Llamar funcion actualizar marcador o perder una vida:
-score += b.points;
-updateScore();
-lives--;
-updateLives();
 
 //fin de juego
 function showEndScreen() {
