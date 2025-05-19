@@ -60,6 +60,9 @@ let lives = 3;
 let gameRunning = false;
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
+
+
+
 // Pelota
 const ballRadius = 10;
 let ball = {
@@ -111,8 +114,6 @@ function createBricks() {
         }
     }
 }
-
-
 
 // Eventos de teclado
 document.addEventListener("keydown", keyDownHandler);
@@ -170,6 +171,14 @@ function moveBall() {
             resetBall();
         }
     }
+}
+
+//resetear posisión de la bola
+function resetBall() {
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height - 30;
+    ball.dx = 2 * (Math.random() > 0.5 ? 1 : -1);
+    ball.dy = -2;
 }
 
 // Dibuja la pelota
@@ -245,8 +254,31 @@ function startGame() {
     draw();
 }
 
+//actualizar  marcador
 const startButton = document.getElementById("startButton");
 startButton.addEventListener("click", () => {
     document.getElementById("startScreen").style.display = "none";
     startGame();
 });
+
+function updateScore() {
+    document.getElementById("score").textContent = score;
+}
+
+function updateLives() {
+    document.getElementById("lives").textContent = lives;
+}
+
+//Llamar funcion actualizar marcador o perder una vida:
+score += b.points;
+updateScore();
+lives--;
+updateLives();
+
+//fin de juego
+function showEndScreen() {
+    const endScreen = document.getElementById("endScreen");
+    endScreen.style.display = "block";
+    const endMessage = document.getElementById("endMessage");
+    endMessage.textContent = "¡Juego terminado! Puntuación: " + score;
+}
