@@ -179,7 +179,31 @@ function resetBall() {
     ball.dy = -2;
 }
 
+canvas.addEventListener("touchstart", handleTouchStart, false);
+canvas.addEventListener("touchmove", handleTouchMove, false);
 
+// Manejo de movimiento táctil
+canvas.addEventListener("touchstart", handleTouchStart, false);
+canvas.addEventListener("touchmove", handleTouchMove, false);
+
+function handleTouchStart(e) {
+    const touchX = e.touches[0].clientX;
+    movePaddleTo(touchX);
+}
+
+function handleTouchMove(e) {
+    e.preventDefault();  // Evitar el desplazamiento de la página
+    const touchX = e.touches[0].clientX;
+    movePaddleTo(touchX);
+}
+
+function movePaddleTo(x) {
+    const rect = canvas.getBoundingClientRect();
+    const relativeX = x - rect.left;
+    if (relativeX > 0 && relativeX < canvas.width) {
+        paddleX = relativeX - paddleWidth / 2;
+    }
+}
 
 // Dibuja la pelota
 function drawBall() {
@@ -275,7 +299,19 @@ function drawBricks() {
 
 // Verificar victoria
 function checkVictory() {
-    return bricks.flat().every(b => b.status === 0);
+    const allBricksCleared = bricks.flat().every(b => b.status === 0);
+    if (allBricksCleared) {
+        alert("¡Ganaste!");
+        gameRunning = false;  // Detener el juego
+        showStartScreen();    // Mostrar pantalla de inicio
+    }
+    return allBricksCleared;
+}
+
+// Mostrar pantalla de inicio
+function showStartScreen() {
+    const startScreen = document.getElementById("startScreen");
+    startScreen.style.display = "block";  // Mostrar el botón de jugar
 }
 
 // Dibuja el juego
