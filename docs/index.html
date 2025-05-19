@@ -41,15 +41,37 @@
         <section id="mecanicas">
             <h2>Mecánicas del Juego</h2>
             <p>El objetivo de Breakout es destruir todos los bloques en pantalla haciendo rebotar una pelota con una plataforma. Si la pelota toca el suelo, pierdes una vida. Los jugadores deben mover la plataforma para mantener la pelota en juego.</p>
-        
-            <div class="breakout-container">
-                <canvas id="breakoutCanvas" width="480" height="320"></canvas>
-                <div class="breakout-score">
-                  <span>Puntuación: <span id="score">0</span></span>
-                  <span>Vidas: <span id="lives">3</span></span>
-                </div>
-              </div>
-        
+            <p>Para moverte usas las felchas del teclado o arrastra la plataforma con tus dedos si estas en movil.</p>
+            
+        <div class="breakout-container">
+            <div id="startScreen" class="overlay">
+                <h2>¡Bienvenido a un prototipo Breakout!</h2>
+                <button id="startButton">Jugar</button>
+            </div>
+
+            <canvas id="breakoutCanvas" width="480" height="320"></canvas>
+            <div class="breakout-score">
+                <span>Puntuación: <span id="score">0</span></span>
+                <span>Vidas: <span id="lives">3</span></span>
+            </div>
+
+            <div id="endScreen" class="overlay" style="display: none;">
+                <h2 id="endMessage"></h2>
+                <button id="restartButton">Reiniciar</button>
+            </div>
+
+            <div id="scoreEntry" class="overlay" style="display: none;">
+                <h2>Ingresa tu nombre:</h2>
+                <input type="text" id="playerName" />
+                <button id="submitScore">Guardar</button>
+            </div>
+
+            <div id="leaderboard">
+                <h2>Tabla de Clasificación</h2>
+                <ol id="highScores"></ol>
+            </div>
+        </div>
+
         </section>
 
         <section id="acerca">
