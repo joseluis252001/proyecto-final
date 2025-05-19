@@ -112,6 +112,8 @@ function createBricks() {
     }
 }
 
+
+
 // Eventos de teclado
 document.addEventListener("keydown", keyDownHandler);
 document.addEventListener("keyup", keyUpHandler);
@@ -126,11 +128,21 @@ function keyUpHandler(e) {
     if (e.key === "Left" || e.key === "ArrowLeft") leftPressed = false;
 }
 
+//Dibujar la Paleta
+function drawPaddle() {
+    ctx.beginPath();
+    ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
 // Mueve la paleta
 function movePaddle() {
     if (rightPressed && paddleX < canvas.width - paddleWidth) paddleX += 7;
     if (leftPressed && paddleX > 0) paddleX -= 7;
 }
+
 
 // Mueve la pelota
 function moveBall() {
@@ -184,6 +196,25 @@ function collisionDetection() {
                     score += b.points;
                     if (checkVictory()) alert("¡Ganaste!");
                 }
+            }
+        }
+    }
+}
+
+//Dibujar Ladrillos
+function drawBricks() {
+    for (let c = 0; c < brickColumnCount; c++) {
+        for (let r = 0; r < brickRowCount; r++) {
+            if (bricks[c][r].status === 1) {
+                const brickX = c * (brickWidth + brickPadding) + brickOffsetLeft;
+                const brickY = r * (brickHeight + brickPadding) + brickOffsetTop;
+                bricks[c][r].x = brickX;
+                bricks[c][r].y = brickY;
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.fillStyle = bricks[c][r].color;
+                ctx.fill();
+                ctx.closePath();
             }
         }
     }
