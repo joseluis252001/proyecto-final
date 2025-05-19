@@ -50,9 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
    Breakout Game Implementation
    =============================== */
 
-   if (!ctx) {
-    console.error("El contexto del canvas no se pudo obtener.");
-}
 
 const canvas = document.getElementById("breakoutCanvas");
 const ctx = canvas.getContext("2d");
