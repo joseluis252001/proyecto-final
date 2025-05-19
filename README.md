@@ -2,7 +2,7 @@
 
 Este es un prototipo del juego Breakout desarrollado con HTML, CSS y JavaScript.
 
-## 💻 Jugar en línea
+## Proyecto-final
 
-Puedes jugar al Breakout directamente desde GitHub Pages:  
-[Ir al juego](https://joseluis252001@hotmail.com.github.io/proyecto-final/)
+pagina e informacion de Breakout:  
+[Breakout](https://joseluis252001@hotmail.com.github.io/proyecto-final/)
