@@ -1,5 +1,7 @@
 # Breakout Game
 
+## José Luis Quijas Olmedo
+
 Este es un prototipo del juego Breakout desarrollado con HTML, CSS y JavaScript.
 
 ## Proyecto-final
