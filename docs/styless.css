@@ -196,4 +196,10 @@ footer {
     display: flex;
   }
 }
-
+/*estilo imagenes*/
+img {
+    border-radius: 50px;
+    margin: 15px 0;
+    max-width: 75%;
+    height: auto;
+}
