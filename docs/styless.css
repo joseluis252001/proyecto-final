@@ -220,11 +220,11 @@ img {
     display: flex;
     justify-content: center;
     gap: 0px;
-    margin-top: 10px;
-    flex-wrap: wrap; /* Opcional: hace que se ajusten si la pantalla es pequeña */
+    margin-top: 0px;
+    flex-wrap: wrap;
 }
 
 .Titulo_n {
     text-align: center;
-    max-width: 100px;
+    max-width: 100%;
 }
